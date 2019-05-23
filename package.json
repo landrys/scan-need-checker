@@ -1,0 +1,15 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Checks each store for needed scans",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fabio Piergentili",
+  "license": "ISC",
+  "dependencies": {
+    "serverless": "^1.43.0",
+    "serverless-python-requirements": "^4.3.0"
+  }
+}
