@@ -74,7 +74,7 @@ functions:
 
     events:
             - schedule:
-                    rate: rate(360 minutes)
+                    rate: cron(15 5 * * ? *)
             
 
 #    The following are a few example events you can configure
