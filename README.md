@@ -10,3 +10,4 @@
   - serverless invoke -f scan-checker --log
 - to remove
   - serverless remove
+- to run locally look at data.json and .ch for serverless command
