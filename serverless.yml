@@ -57,26 +57,33 @@ provider:
     braintreeEmailList: ${self:custom.myEnvironment.braintreeEmailList.${self:custom.myStage}}
     norwoodEmailList: ${self:custom.myEnvironment.norwoodEmailList.${self:custom.myStage}}
     centralEmailList: ${self:custom.myEnvironment.centralEmailList.${self:custom.myStage}}
-    host:  "172.31.46.112"
+    reportEmailList: ${self:custom.myEnvironment.reportEmailList.${self:custom.myStage}}
+    host:  "172.31.46.112" # 11nator private IP
 
 # you can add packaging information here
-#package:
+package:
 #  include:
 #    - include-me.py
 #    - include-me-dir/**
-#  exclude:
-#    - exclude-me.py
-#    - exclude-me-dir/**
+  exclude:
+    - node_modules/**
+    - venv/**
 
 functions:
   scan-checker:
     handler: handler.main
 
     events:
-            - schedule:
-                    rate: cron(15 5 * * ? *)
-            
-
+     - schedule: 
+         rate: cron(20 10 * * ? *)
+         enabled: true
+         input:
+           report: false 
+     - schedule: 
+         rate: cron(15 11 * * ? *)
+         enabled: true
+         input:
+           report: true 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -153,6 +160,9 @@ custom:
       prod: "fpiergen@landrys.com"
       dev:  "fpiergen@landrys.com"     
     centralEmailList:
+      prod: "fpiergen@landrys.com"
+      dev:  "fpiergen@landrys.com"     
+    reportEmailList:
       prod: "fpiergen@landrys.com"
       dev:  "fpiergen@landrys.com"     
   pythonRequirements:

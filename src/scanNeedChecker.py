@@ -6,7 +6,7 @@ import os
 
 class ScanNeedChecker():
 
-    _lazyScannerFinderQueryTemplate = "select (select count(*) from latest_scan_ac ls join item_location_scan_ac ils on ils.id=ls.item_location_scan join location l on ils.scan_location=l.id join serialized s on s.id=ils.serialized where l.top_level_id={} and s.customer_id is null and s.sale_line_id is null and s.lc_deleted is null and  ils.timestamp < date_add(now(), interval -{} day) ) / (select count(*) from latest_scan_ac ls join item_location_scan_ac ils on ils.id=ls.item_location_scan join location l on ils.scan_location=l.id join serialized s on s.id=ils.serialized where l.top_level_id={} and s.customer_id is null and s.sale_line_id is null and s.lc_deleted is null ) as fractionUnscanned"
+    _lazyScannerFinderQueryTemplate = "select (select count(*) from latest_scan_ac ls join item_location_scan_ac ils on ils.id=ls.item_location_scan join location l on ils.scan_location=l.id join ascend_serialized s on s.id=ils.serialized where l.top_level_id={} and s.customer is null  and s.deleted=0 and  ils.timestamp < date_add(now(), interval -{} day) ) / (select count(*) from latest_scan_ac ls join item_location_scan_ac ils on ils.id=ls.item_location_scan join location l on ils.scan_location=l.id join ascend_serialized s on s.id=ils.serialized where l.top_level_id={} and s.customer is null and s.deleted =0 ) as fractionUnscanned"
     _lazyScannerFinderQuery = ""
 
     _daysBack = [14, 13, 11, 8]

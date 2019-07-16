@@ -1,6 +1,7 @@
 # Distribution / packaging
 __pycache__
 private
+private.1
 .Python
 env/
 build/
@@ -17,6 +18,8 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+node_modules
+venv
 
 # Serverless directories
 .serverless

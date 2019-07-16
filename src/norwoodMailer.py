@@ -23,5 +23,6 @@ class NorwoodMailer(Mailer):
         return self._recipients
 
     def mail(self):
-        mailSender = MailSender(self._mailSender, self._mailSenderPassword, self._recipients, self._subject, self._msg)
+        mailSender = MailSender(self._mailSender, self._mailSenderPassword,\
+                self._recipients, self._subject, self._msg)
         mailSender.send()
